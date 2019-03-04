@@ -1,8 +1,9 @@
 #recipe Blog
 
 // Customize your settings and add new ones here
-Settings[Keys.Host] = "host.com";
-Settings[BlogKeys.Title] = "My Blog";
-Settings[BlogKeys.Description] = "Welcome!";
+Settings[Keys.Host] = "richardtasker.co.uk";
+Settings[BlogKeys.Title] = "Richard Tasker";
+Settings[BlogKeys.Description] = "Strings, Things and Lightsabers";
 
-// Add any pipeline customizations here
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+= System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
