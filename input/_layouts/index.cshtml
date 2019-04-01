@@ -1,0 +1,86 @@
+@{
+	var posts = Documents
+		.WhereContainsKey("date")
+		.OrderByDescending(x => x.Get<DateTime>("date"));
+	
+	Func<IDocument, object> getTags = (doc) =>
+	{
+		if (!doc.ContainsKey("tags"))
+			return null;
+			
+		var tags = doc.Get<string[]>("tags");
+		var items = new List<string>();
+
+		foreach (var tag in tags)
+		{
+			items.Add($"<a href=\"/tag/{tag}/\">{tag}</a>");
+		}
+
+		return Html.Raw(string.Join(", ", items));
+	};
+}
+
+<!-- start main content area -->
+	<section class="main-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1 content-wrap">
+					@foreach (var post in posts)
+					{
+						var date = post.Get<DateTime>("Published");
+						<!-- start post -->
+						<article class="post">
+							@if (post.ContainsKey("feature-image"))
+							{
+								<div class="featured-media">
+									<a href="@post["permalink"]" title="@Html.Raw(post.String("title"))"><img class="gray" src="" alt="@Html.Raw(post.String("title"))"></a>
+								</div>	
+							}
+							<div class="post-inner-wrap">
+								<header class="post-header align-center">
+									<h2 class="post-title"><a href="@post["permalink"]">@Html.Raw(post.String("title"))</a></h2>
+									<div class="post-meta">
+										<span class="date">@date.ToString("Do MMM, YYYY")</span> &#47;
+										@if (post.ContainsKey("Author"))
+										{
+											<span class="author">
+												By @post.String("Author")
+											</span>
+										}
+									</div>
+									@if (post.ContainsKey("Featured") && post.Get<bool>("Featured"))
+									{
+										<div class="featured">
+											Featured
+										</div>
+									}
+								</header>
+								<div class="post-content">
+									// Insert Content 40 words
+								</div>
+								<div class="permalink align-center">
+									<a href="@post["permalink"]" class="btn btn-default">Read More</a>
+								</div>
+								<footer class="post-footer clearfix">
+									@if (post.ContainsKey("tags"))
+									{
+										<div class="pull-left tag-list">
+											<i class="fa fa-folder-o"></i>
+											@getTags(post)
+										</div>
+									}
+									<div class="pull-right comment">
+										<i class="fa fa-comment-o"></i>
+										<a href="@post["permalink"]#disqus_thread">0 Comments</a>
+									</div>
+								</footer>
+							</div>
+						</article>
+						<!-- end post -->
+					}
+					//Insert Pagination
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end main content area -->

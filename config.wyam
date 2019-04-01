@@ -1,9 +1,40 @@
-#recipe Blog
+#n -p Wyam.Html
+#n -p Wyam.Less
+#n -p Wyam.Markdown
+#n -p Wyam.Minification
+#n -p Wyam.Razor
+#n -p Wyam.ReadingTime
+#n -p Wyam.Yaml
+#n ColorCode
+#n System.ServiceModel.Syndication
 
 // Customize your settings and add new ones here
+Settings[Keys.CleanOutputPath] = true;
 Settings[Keys.Host] = "richardtasker.co.uk";
-Settings[BlogKeys.Title] = "Richard Tasker";
-Settings[BlogKeys.Description] = "Strings, Things and Lightsabers";
+Settings[Keys.LinksUseHttps] = true;
+Settings["Title"] = "Richard Tasker";
+Settings["Description"] = "Strings, Things and Lightsabers";
+
 
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture
 = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
+
+Pipelines.Add("Homepage",
+	ReadFiles("_layouts/index.cshtml"),
+	FrontMatter(Yaml()),
+	Meta("canonical", "/"),
+	Razor()
+		.WithViewStart("_layouts/_ViewStart.cshtml"),
+	MinifyHtml(),
+	WriteFiles()
+);
+
+
+Pipelines.Add("Posts",
+	ReadFiles("posts/*.md"),
+	FrontMatter(Yaml()),
+	CopyMeta("permalink", "canonical"),
+	Markdown(),
+	MinifyHtml(),
+	WriteFiles("." + @doc["permalink"] + "index.html")
+);
