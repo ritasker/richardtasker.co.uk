@@ -2,6 +2,7 @@ Published: 2013-07-24
 Title: 14 Goals for 2014
 Lead: 2013 was a great year for me, this may have been partly down to some personal goals I set myself. In 2014 I plan to do the same.
 Author: richtasker
+permalink: /2014/01/01/14-goals-for-2014
 Tags:
   - General
 ---

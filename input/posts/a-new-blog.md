@@ -2,6 +2,7 @@ Published: 2016-05-25
 Title: A New Blog
 Lead: 2013 was a great year for me, this may have been partly down to some personal goals I set myself. In 2014 I plan to do the same.
 Author: richtasker
+permalink: /2016/05/25/a-new-blog
 Tags:
   - Blogging
 ---

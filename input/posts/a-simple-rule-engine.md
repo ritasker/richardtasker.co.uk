@@ -2,6 +2,7 @@ Published: 2014-01-19
 Title: A Simple Rule Engine
 Lead: After a brainstorming session, and the use of a few interfaces and design patterns a potentially complicated rules engine turned out to be quite simple.
 Author: richtasker
+permalink: /2014/01/19/a-simple-rule-engine
 Tags:
   - C#
   - Design Patterns

@@ -2,6 +2,7 @@ Published: 2012-10-23
 Title: DDD North 2
 Lead: DDD North is a free event for developers and organised by developers. These are the sessions I attended.
 Author: richtasker
+permalink: /2012/10/23/ddd-north-2
 Tags:
   - DDD North
   - Public Speaking

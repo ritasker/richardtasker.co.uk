@@ -2,6 +2,7 @@ Published: 2018-09-15
 Title: Introducing dotnet-db-migrate
 Lead: A .NET Core global tool is a special NuGet package that contains a console application. Here I create a global tool for database migrations using db-up.
 Author: richtasker
+permalink: /2018/09/15/introducing-dotnet-db-migrate
 Tags:
   - db-up
   - Dotnet Core
