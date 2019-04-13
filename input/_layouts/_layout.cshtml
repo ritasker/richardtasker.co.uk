@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--{{! Document Settings }}-->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--{{! Page Meta }}-->
+    <title>@Html.Raw(title)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- stylesheets -->
+    <!--{{! Styles'n'Scripts }}-->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{asset "css/bootstrap.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/hl-styles/monokai_sublime.css"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+    <!--{{! inserting theme config partial}}
+    {{> config}}
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}-->
+</head>
+<body class="{{body_class}}">
+<!--{{! insert header partial}}-->
+	
+@RenderBody()
+
+<!--{{! insert footer partial}}
+{{> footer}}-->

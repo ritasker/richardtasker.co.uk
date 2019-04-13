@@ -3,6 +3,7 @@
 ![Tt]ools/packages.config
 [Oo]utput/
 [Rr]elease/
+sylva/*
 nuget.exe
 /debug.log
 /node_modules/

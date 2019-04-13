@@ -19,13 +19,20 @@ Settings["Description"] = "Strings, Things and Lightsabers";
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture
 = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
 
+Pipelines.Add("LessCss",
+    ReadFiles("_assets/css/*.less"),
+	Less(),
+    MinifyCss(),
+    WriteFiles(@doc.String("RelativeFilePathBase").Replace("_assets/", "") + ".css").UseWriteMetadata(false)
+);
+
+
 Pipelines.Add("Homepage",
 	ReadFiles("_layouts/index.cshtml"),
 	FrontMatter(Yaml()),
 	Meta("canonical", "/"),
 	Razor()
 		.WithViewStart("_layouts/_ViewStart.cshtml"),
-	MinifyHtml(),
 	WriteFiles()
 );
 
@@ -35,6 +42,10 @@ Pipelines.Add("Posts",
 	FrontMatter(Yaml()),
 	CopyMeta("permalink", "canonical"),
 	Markdown(),
-	MinifyHtml(),
 	WriteFiles("." + @doc["permalink"] + "index.html")
+);
+
+Pipelines.Add("Assets",
+	CopyFiles("_assets/**/*{!.cshtml,!.md,!.less,}")
+		.To(x => x.Path.FullPath.Replace("input/_assets/", "output/"))
 );
