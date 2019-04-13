@@ -12,20 +12,18 @@
 Settings[Keys.CleanOutputPath] = true;
 Settings[Keys.Host] = "richardtasker.co.uk";
 Settings[Keys.LinksUseHttps] = true;
-Settings["Title"] = "Richard Tasker";
-Settings["Description"] = "Strings, Things and Lightsabers";
 
 
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture
 = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
 
-Pipelines.Add("LessCss",
-    ReadFiles("_assets/css/*.less"),
+Pipelines.Add("Less",
+    ReadFiles("_assets/css/**/*.less"),
 	Less(),
     MinifyCss(),
-    WriteFiles(@doc.String("RelativeFilePathBase").Replace("_assets/", "") + ".css").UseWriteMetadata(false)
+    WriteFiles(@doc.String("RelativeFilePathBase").Replace("_assets/", "assets/") + ".css")
+    .UseWriteMetadata(false)
 );
-
 
 Pipelines.Add("Homepage",
 	ReadFiles("_layouts/index.cshtml"),
@@ -36,16 +34,15 @@ Pipelines.Add("Homepage",
 	WriteFiles()
 );
 
-
-Pipelines.Add("Posts",
-	ReadFiles("posts/*.md"),
-	FrontMatter(Yaml()),
-	CopyMeta("permalink", "canonical"),
-	Markdown(),
-	WriteFiles("." + @doc["permalink"] + "index.html")
-);
+// Pipelines.Add("Posts",
+// 	ReadFiles("posts/*.md"),
+// 	FrontMatter(Yaml()),
+// 	CopyMeta("permalink", "canonical"),
+// 	Markdown(),
+// 	WriteFiles("." + @doc["permalink"] + "index.html")
+// );
 
 Pipelines.Add("Assets",
 	CopyFiles("_assets/**/*{!.cshtml,!.md,!.less,}")
-		.To(x => x.Path.FullPath.Replace("input/_assets/", "output/"))
+		.To(x => x.Path.FullPath.Replace("input/_assets/", "output/assets/"))
 );

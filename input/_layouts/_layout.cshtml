@@ -1,3 +1,6 @@
+@{
+    var title = Model.Get<string>("Title", "Index") + " - Richard Tasker";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +13,21 @@
     <!-- stylesheets -->
     <!--{{! Styles'n'Scripts }}-->
     <link href='http://fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{asset "css/bootstrap.min.css"}}">
-    <link rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
-    <link rel="stylesheet" type="text/css" href="{{asset "css/hl-styles/monokai_sublime.css"}}">
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/monokai_sublime.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
     <!--{{! inserting theme config partial}}
     {{> config}}
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}-->
 </head>
-<body class="{{body_class}}">
+<body >
 <!--{{! insert header partial}}-->
 	
 @RenderBody()
 
 <!--{{! insert footer partial}}
 {{> footer}}-->
+</body>
+</html>
