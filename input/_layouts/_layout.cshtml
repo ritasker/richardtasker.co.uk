@@ -4,30 +4,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--{{! Document Settings }}-->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!--{{! Page Meta }}-->
-    <title>@Html.Raw(title)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- stylesheets -->
-    <!--{{! Styles'n'Scripts }}-->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/monokai_sublime.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
-    <!--{{! inserting theme config partial}}
-    {{> config}}
-    {{! Ghost outputs important style and meta data with this tag }}
-    {{ghost_head}}-->
+	<!--{{! Document Settings }}-->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!--{{! Page Meta }}-->
+	<title>@Html.Raw(title)</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- stylesheets -->
+	<!--{{! Styles'n'Scripts }}-->
+	<link href='http://fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/monokai_sublime.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
+	<!--{{! inserting theme config partial}}
+	{{> config}}
+	{{! Ghost outputs important style and meta data with this tag }}
+	{{ghost_head}}-->
 </head>
 <body >
-<!--{{! insert header partial}}-->
+@Html.Partial("~/_layouts/_header.cshtml")
 	
 @RenderBody()
 
-<!--{{! insert footer partial}}
-{{> footer}}-->
+@Html.Partial("~/_layouts/_footer.cshtml")
+
+<a href="#" id="back-to-top" class="align-center"><i class="fa fa-long-arrow-up"></i></a>
+@* {{ghost_foot}} *@
+<script type="text/javascript">
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.fitvids.js"></script>
+<script src="/assets/js/highlight.pack.js"></script>
+<script src="/assets/js/main.js"></script>
+@* {{> analytics}} *@
 </body>
 </html>
