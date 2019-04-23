@@ -1,5 +1,5 @@
 @{
-    var title = Model.Get<string>("Title", "Index") + " - Richard Tasker";
+    var title = Model.Get<string>("Title", Model["tag-line"].ToString()) + " - " + Model["site-title"].ToString();
 }
 <!DOCTYPE html>
 <html lang="en">
