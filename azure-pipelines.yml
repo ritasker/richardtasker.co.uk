@@ -23,6 +23,5 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish Site Artifacts 
   inputs:
-    sourceFolder: '$(Agent.BuildDirectory)/s/output'
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: '$(Build.BuildId)'
+    pathtoPublish: '$(Agent.BuildDirectory)/s/output'
+    artifactName: 'Deployment-$(Build.BuildId)'
