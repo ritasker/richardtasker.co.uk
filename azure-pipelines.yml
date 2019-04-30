@@ -20,11 +20,9 @@ steps:
 - script: wyam
   displayName: Build Site
 
-- task: ArchiveFiles@2
-  displayName: Zip Site
+- task: PublishBuildArtifacts@1
+  displayName: Publish Site Artifacts 
   inputs:
-    rootFolderOrFile: '$(Agent.BuildDirectory)/s/output'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    sourceFolder: '$(Agent.BuildDirectory)/s/output'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: '$(Build.BuildId)'
