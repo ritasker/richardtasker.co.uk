@@ -1,19 +1,30 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- master
-
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  configuration: debug
+  platform: x64
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+steps:
+  - task: DotNetCoreInstaller@0
+  displayName: Install .NET Core SDK
+  name: install_dotnetcore_sdk
+  enabled: true
+  inputs:
+    packageType: 'sdk'
+    version: '2.2.101'
+
+  - script: dotnet tool install -g Wyam.Tool
+  displayName: Install Wyam
+
+  - script: wyam
+  displayName: Build Site
+
+  - task: ArchiveFiles@2
+  displayName: Zip Site
+  inputs:
+    rootFolderOrFile: '$(Agent.BuildDirectory)/s/output'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
