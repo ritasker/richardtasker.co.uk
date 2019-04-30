@@ -33,4 +33,4 @@ steps:
   displayName: Publish Site Artifacts 
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
-    artifactName: 'Deployment-$(Build.BuildId)'
+    artifactName: '$(Build.SourceBranchName)-$(Build.BuildId)'
