@@ -1,12 +1,3 @@
-@* {{#is "home"}} *@
-@* {{> cover-main}} *@
-@* {{/is}} *@
-@* {{#is "tag"}} *@
-@* {{^is "paged"}} *@
-@* {{> cover-tag}} *@
-@* {{/is}} *@
-@* {{/is}} *@
-
 <!-- start header -->
 <header class="main-header">
 	<nav class="navbar">
@@ -30,13 +21,10 @@
 			<div class="collapse navbar-collapse" id="main-menu">
                 <!-- start navigation -->
                 <ul class="menu navbar-right">
-	                <li class="Home nav-current"><a href="#">Home</a></li>
-	                <li class="public-speaking"><a href="#">Public Speaking</a></li>
-	                <li class="about"><a href="#">About</a></li>
-	                <li class="now"><a href="#">Now</a></li>
-	                @*    {{#foreach navigation}} *@
-	                @* <li class="{{slug}} {{#if current}}nav-current{{/if}}"><a href="{{url absolute="true"}}">{{label}}</a></li> *@
-	                @* {{/foreach}} *@
+	                <li class="home"><a href="/">Home</a></li>
+	                <li class="public-speaking"><a href="/public-speaking">Public Speaking</a></li>
+	                <li class="about"><a href="/about">About</a></li>
+	                <li class="now"><a href="/now">Now</a></li>
                 </ul>
                 <!-- end navigation -->
             </div>

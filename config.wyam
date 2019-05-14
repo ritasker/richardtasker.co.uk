@@ -36,6 +36,16 @@ Pipelines.Add("Homepage",
 	WriteFiles()
 );
 
+Pipelines.Add("Pages",
+	ReadFiles("_pages/*.md"),
+	FrontMatter(Yaml()),
+	Markdown(),
+	Meta("canonical", @doc.String("RelativeFilePathBase").Replace("_pages/", "/") + "/"),
+	Razor()
+		.WithViewStart("_layouts/_ViewStart.cshtml"),	
+	WriteFiles(@doc.String("RelativeFilePathBase").Replace("_pages/", "") + "/index.html")
+);
+
 // Pipelines.Add("Posts",
 // 	ReadFiles("posts/*.md"),
 // 	FrontMatter(Yaml()),
