@@ -46,15 +46,27 @@ Pipelines.Add("Pages",
 	WriteFiles(@doc.String("RelativeFilePathBase").Replace("_pages/", "") + "/index.html")
 );
 
-// Pipelines.Add("Posts",
-// 	ReadFiles("posts/*.md"),
-// 	FrontMatter(Yaml()),
-// 	CopyMeta("permalink", "canonical"),
-// 	Markdown(),
-// 	WriteFiles("." + @doc["permalink"] + "index.html")
-// );
+ Pipelines.Add("Posts",
+ 	ReadFiles("_posts/*.md"),
+ 	FrontMatter(Yaml()),
+ 	Markdown(),
+ 	Meta("canonical", @doc.String("RelativeFilePathBase").Replace("_posts/", "/") + "/"),
+    	Razor()
+    		.WithViewStart("_layouts/_ViewStart.cshtml"),	
+ 	WriteFiles("." + @doc["permalink"] + "/index.html")
+ );
 
 Pipelines.Add("Assets",
 	CopyFiles("_assets/**/*{!.cshtml,!.md,!.less,}")
 		.To(x => x.Path.FullPath.Replace("input/_assets/", "output/assets/"))
 );
+
+public static class SiteHelpers
+{
+    public static string CleanTag(string rawTag)
+    {
+        return rawTag
+            .ToLowerInvariant()
+            .Replace(' ', '-');
+    }
+} 

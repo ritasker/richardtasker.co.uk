@@ -1,6 +1,6 @@
 Published: 2016-05-25
 Title: Now
-Author: richtasker
+Author: Rich Tasker
 permalink: /now
 layout: page
 current: now

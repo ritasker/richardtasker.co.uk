@@ -11,16 +11,11 @@
     <title>@Html.Raw(title)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- stylesheets -->
-    <!--{{! Styles'n'Scripts }}-->
     <link href='//fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/hl-styles/monokai_sublime.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
-    <!--{{! inserting theme config partial}}
-    {{> config}}
-    {{! Ghost outputs important style and meta data with this tag }}
-    {{ghost_head}}-->
 </head>
 <body >
 @Html.Partial("~/_layouts/_header.cshtml")
@@ -57,7 +52,6 @@
 @Html.Partial("~/_layouts/_footer.cshtml")
 
 <a href="#" id="back-to-top" class="align-center"><i class="fa fa-long-arrow-up"></i></a>
-@* {{ghost_foot}} *@
 <script type="text/javascript">
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
@@ -72,6 +66,5 @@
 <script src="/assets/js/jquery.fitvids.js"></script>
 <script src="/assets/js/highlight.pack.js"></script>
 <script src="/assets/js/main.js"></script>
-@* {{> analytics}} *@
 </body>
 </html>

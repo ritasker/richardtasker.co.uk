@@ -1,7 +1,8 @@
+layout: post
 Published: 2016-06-09
 Title: Skinny Fat, Lean Up Your Controllers - Introduction
 Lead: Fat controllers are bad. In this series I will show you how you can lean up your controllers by moving your code to a command based system.
-Author: richtasker
+Author: Rich Tasker
 permalink: /2016/06/09/lean-up-your-controllers-intro
 Tags:
   - ASP.Net

@@ -1,6 +1,6 @@
 Published: 2016-05-25
 Title: About
-Author: richtasker
+Author: Rich Tasker
 permalink: /about
 image: /assets/images/Profile.png
 layout: page

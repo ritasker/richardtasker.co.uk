@@ -1,6 +1,6 @@
 Title: Skinny Fat, Lean Up Your Controllers - Updating The Read Model
 Lead: This post focuses on the writes in the system and introduces the concept of a command and handlers for mutating state, reducing the controller further.
-Author: richtasker
+Author: Rich Tasker
 permalink: /drafts/lean-controllers-pt3
 Tags:
   - ASP.Net

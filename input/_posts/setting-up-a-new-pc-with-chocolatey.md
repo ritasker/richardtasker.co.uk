@@ -1,7 +1,8 @@
+layout: post
 Published: 2013-07-28
 Title: Setting Up a New PC with Chocolatey
 Lead: I have written a powershell script which will install some of the applications I use a lot via the Chocolatey Nuget Gallery.
-Author: richtasker
+Author: Rich Tasker
 permalink: /2013/07/28/setting-up-a-new-pc-with-chocolatey
 Tags:
   - Chocolatey

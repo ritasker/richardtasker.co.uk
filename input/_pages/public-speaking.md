@@ -1,6 +1,6 @@
 Published: 2016-09-28
 Title: Public Speaking
-Author: richtasker
+Author: Rich Tasker
 permalink: /public-speaking
 layout: page
 current: public-speaking
