@@ -1,20 +1,15 @@
 <div class="about-author clearfix">
-    {{#if profile_image}}
-    <a href="{{url}}"><img src="{{profile_image}}" alt="Author profile image" class="avatar"></a>
-    {{/if}}
+    <img src="/assets/images/ProfilePic.jpg" alt="Author profile image" class="avatar" />
     <div class="details">
         <div class="author">
-            <h3><a href="{{url}}">{{name}}</a></h3>
+            <h3><a>Richard Tasker</a></h3>
         </div>
-        {{#if bio}}
         <div class="bio">
-            {{{bio}}}
+            Richard is a .Net Developer with 8yrs experience building web applications. Richard has a keen interest in 
+            developing APIs and distributed systems for the cloud using agile methods. 
         </div>
-        {{/if}}
         <div class="meta-info">
-            {{#if location}}
-            <span class="loaction"><i class="fa fa-home"></i>{{location}}</span>
-            {{/if}}
+            <span class="loaction"><i class="fa fa-home"></i>Leeds, UK</span>
         </div>
     </div>
 </div>
