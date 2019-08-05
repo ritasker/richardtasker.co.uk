@@ -5,7 +5,56 @@ WritePath: index.html
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 content-wrap">
-					Hello Qwerty!
+					@foreach (IDocument doc in Model.Get<IEnumerable<IDocument>>("PageDocuments"))
+					{
+						<!-- start post -->
+						<article class="post">
+							@* {{#if feature_image}} *@
+							@* <div class="featured-media"> *@
+							@* 	<a href="{{url}}" title="{{{title}}}"><img class="gray" src="{{feature_image}}" alt="{{{title}}}"></a> *@
+							@* </div> *@
+							@* {{/if}} *@
+							<div class="post-inner-wrap">
+								<header class="post-header align-center">
+									<h2 class="post-title"><a href="@doc.String("DestinationFileName")">@doc.Metadata.String("title")</a></h2>
+									<div class="post-meta">
+										<span class="date">@doc.Metadata.DateTime("published").ToString("dd MMM, yyyy")</span> &#47;
+										<span class="author">
+											By @doc.Metadata.String("author")
+										</span>
+									</div>
+									@if(@doc.Metadata.Bool("featured"))
+									{
+									<div class="featured">
+										Featured
+									</div>
+									}
+								</header>
+								<div class="post-content">
+									@doc.Metadata.String("lead")
+								</div>
+								<div class="permalink align-center">
+									<a href="@doc.String("DestinationFileName")" class="btn btn-default">Read More</a>
+								</div>
+								<footer class="post-footer clearfix">
+									@* {{#if tags}} *@
+									@* <div class="pull-left tag-list"> *@
+									@* 	<i class="fa fa-folder-o"></i> *@
+									@* 	{{tags separator=", "}} *@
+									@* </div> *@
+									@* {{/if}} *@
+									<div class="pull-right comment">
+										<i class="fa fa-comment-o"></i>
+										<a href="@doc.String("DestinationFileName")#disqus_thread">0 Comments</a>
+									</div>
+								</footer>
+							</div>
+						</article>
+					}
+                					
+					<!-- end post -->
+					{{! inserting pagination partial}}
+					{{pagination}}
 				</div>
 			</div>
 		</div>

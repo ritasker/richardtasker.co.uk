@@ -27,15 +27,6 @@ Pipelines.Add("Less",
     .UseWriteMetadata(false)
 );
 
-Pipelines.Add("Homepage",
-	ReadFiles("_layouts/index.cshtml"),
-	FrontMatter(Yaml()),
-	Meta("canonical", "/"),
-	Razor()
-		.WithViewStart("_layouts/_ViewStart.cshtml"),
-	WriteFiles()
-);
-
 Pipelines.Add("Pages",
 	ReadFiles("_pages/*.md"),
 	FrontMatter(Yaml()),
@@ -55,6 +46,17 @@ Pipelines.Add("Pages",
     		.WithViewStart("_layouts/_ViewStart.cshtml"),	
  	WriteFiles("." + @doc["permalink"] + "/index.html")
  );
+
+Pipelines.Add("Homepage",
+	ReadFiles("_layouts/index.cshtml"),
+	Paginate(5, Documents("Posts"), OrderBy((d, c) => d["Published"]).Descending()),
+	FrontMatter(Yaml()),
+	Meta("canonical", "/"),
+	Razor()
+		.WithViewStart("_layouts/_ViewStart.cshtml"),
+		
+	WriteFiles(@doc.Get<int>("CurrentPage") == 1 ? "index.html" : ("index-" + @doc.Get<int>("CurrentPage") + ".html")).UseWriteMetadata(false)
+);
 
 Pipelines.Add("Assets",
 	CopyFiles("_assets/**/*{!.cshtml,!.md,!.less,}")
