@@ -1,13 +1,22 @@
+@{
+	var currentPage = Model.Get<int>("CurrentPage");
+	var nextPage = currentPage +1;
+	var prevPage = currentPage -1;
+}
 <!-- start pagination -->
 <div class="pagination-wrap">
     <nav class="pagination clearfix" role="navigation">
-        {{#if prev}}
-        <a class="newer-posts btn btn-default" href="{{page_url prev}}"> <i class="fa fa-long-arrow-left fa-fw"></i> {{t "Newer Posts"}}</a>
-        {{/if}}
-        <span class="page-number">{{t "Page {page} of {pages}" page=page pages=pages}}</span>
-        {{#if next}}
-        <a class="older-posts btn btn-default" href="{{page_url next}}">{{t "Older Posts"}} <i class="fa fa-long-arrow-right fa-fw"></i></a>
-        {{/if}}
+		@if(Model.Get<bool>("HasPreviousPage"))
+		{
+			var prevPageLink = prevPage == 1 ? "index.html" : $"index-{prevPage}.html";
+			<a class="newer-posts btn btn-default" href="@prevPageLink"> <i class="fa fa-long-arrow-left fa-fw"></i>Newer Posts</a>
+        }
+        <span class="page-number">Page @Model.String("CurrentPage") of @Model.String("TotalPages")</span>
+        @if(Model.Get<bool>("HasNextPage"))
+		{
+			var nextPageLink = nextPage == 1 ? "index.html" : $"index-{nextPage}.html";
+			<a class="older-posts btn btn-default" href="@nextPageLink">Older Posts<i class="fa fa-long-arrow-right fa-fw"></i></a>
+        }
     </nav>
 </div>
 <!-- end pagination -->
