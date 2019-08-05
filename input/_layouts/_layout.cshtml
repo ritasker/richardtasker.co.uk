@@ -1,5 +1,5 @@
 @{
-    var title = Model.Get<string>("Title", Model["tag-line"].ToString()) + " - " + Model["site-title"].ToString();
+    var title = Model.Get<string>("Title", Model["site-title"].ToString());
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +18,9 @@
 	<link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
 </head>
 <body >
+@RenderSection("CoverMain", false)
 @Html.Partial("~/_layouts/_header.cshtml")
-	
+
 @RenderBody()
 
 @Html.Partial("~/_layouts/_footer.cshtml")
