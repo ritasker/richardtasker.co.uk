@@ -46,6 +46,26 @@ Pipelines.Add("Pages",
     		.WithViewStart("_layouts/_ViewStart.cshtml"),	
  	WriteFiles("." + @doc["permalink"] + "/index.html")
  );
+ 
+ Pipelines.Add("Tags",
+ 	ReadFiles("_layouts/_tags.cshtml"),
+ 	Execute(@ctx.Documents
+ 		.WhereContainsKey("Tags")
+ 		.SelectMany(x => x.Get<string[]>("Tags"))
+ 		.Distinct(StringComparer.InvariantCultureIgnoreCase)
+ 		.Select(x => @ctx.GetDocument(@doc, new Dictionary<string, object>()
+ 			{
+ 				{ "title", x },
+ 				{ "displayTag", x },
+ 				{ "tag", SiteHelpers.CleanTag(x) }
+ 			})
+ 		)
+ 	),
+ 	CopyMeta("tag", "canonical", "/tag/{0}/"),
+ 	Razor()
+ 		.WithViewStart("_layouts/_ViewStart.cshtml"), 	
+ 	WriteFiles("./tag/" + @doc.String("tag") + "/index.html")
+ );
 
 Pipelines.Add("Homepage",
 	ReadFiles("_layouts/index.cshtml"),
