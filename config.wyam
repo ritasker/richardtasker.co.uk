@@ -3,7 +3,6 @@
 #n -p Wyam.Markdown
 #n -p Wyam.Minification
 #n -p Wyam.Razor
-#n -p Wyam.ReadingTime
 #n -p Wyam.Yaml
 #n ColorCode
 #n System.ServiceModel.Syndication
@@ -37,44 +36,38 @@ Pipelines.Add("Pages",
 	WriteFiles(@doc.String("RelativeFilePathBase").Replace("_pages/", "") + "/index.html")
 );
 
- Pipelines.Add("Posts",
- 	ReadFiles("_posts/*.md"),
- 	FrontMatter(Yaml()),
- 	Markdown(),
- 	Meta("canonical", @doc.String("RelativeFilePathBase").Replace("_posts/", "/") + "/"),
-    	Razor()
-    		.WithViewStart("_layouts/_ViewStart.cshtml"),	
- 	WriteFiles("." + @doc["permalink"] + "/index.html")
- );
- 
- Pipelines.Add("Tags",
- 	ReadFiles("_layouts/_tags.cshtml"),
- 	Execute(@ctx.Documents
- 		.WhereContainsKey("Tags")
- 		.SelectMany(x => x.Get<string[]>("Tags"))
- 		.Distinct(StringComparer.InvariantCultureIgnoreCase)
- 		.Select(x => @ctx.GetDocument(@doc, new Dictionary<string, object>()
- 			{
- 				{ "title", x },
- 				{ "displayTag", x },
- 				{ "tag", SiteHelpers.CleanTag(x) }
- 			})
- 		)
- 	),
- 	CopyMeta("tag", "canonical", "/tag/{0}/"),
+Pipelines.Add("Posts",
+    ReadFiles("_posts/*.md"),
+    FrontMatter(Yaml()),
+    Markdown(),
+    Meta("canonical", @doc.String("RelativeFilePathBase").Replace("_posts/", "/") + "/"),
+    Razor()
+        .WithViewStart("_layouts/_ViewStart.cshtml"),	
+    WriteFiles("." + @doc["permalink"] + "/index.html")
+);
+
+Pipelines.Add("Tags",
+    ReadFiles("_layouts/tags.cshtml"),
+ 	GroupByMany(@doc.List<string>("Tags"), Documents("Posts")), 	
+ 	ForEach(
+    		(IModule)Paginate(5,
+    			Documents(@doc["GroupDocuments"]),
+    			OrderBy((d, c) => d["Published"]).Descending()
+    		),
+    		Meta("canonical", "/tag/{0}/")
+    	),
  	Razor()
  		.WithViewStart("_layouts/_ViewStart.cshtml"), 	
- 	WriteFiles("./tag/" + @doc.String("tag") + "/index.html")
- );
-
+ 	WriteFiles("./tag/" + SiteHelpers.CleanTag(@doc.String("GroupKey")) + "/" + (@doc.Get<int>("CurrentPage") == 1 ? "index.html" : ("index-" + @doc.Get<int>("CurrentPage") + ".html")))
+);
+ 
 Pipelines.Add("Homepage",
 	ReadFiles("_layouts/index.cshtml"),
 	Paginate(5, Documents("Posts"), OrderBy((d, c) => d["Published"]).Descending()),
 	FrontMatter(Yaml()),
 	Meta("canonical", "/"),
 	Razor()
-		.WithViewStart("_layouts/_ViewStart.cshtml"),
-		
+		.WithViewStart("_layouts/_ViewStart.cshtml"),		
 	WriteFiles(@doc.Get<int>("CurrentPage") == 1 ? "index.html" : ("index-" + @doc.Get<int>("CurrentPage") + ".html")).UseWriteMetadata(false)
 );
 
@@ -89,6 +82,7 @@ public static class SiteHelpers
     {
         return rawTag
             .ToLowerInvariant()
-            .Replace(' ', '-');
+            .Replace(' ', '-')
+            .Replace("c#", "csharp");
     }
 } 
