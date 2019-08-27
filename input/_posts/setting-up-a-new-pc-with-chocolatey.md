@@ -1,4 +1,5 @@
 layout: post
+Id: 20e14499-4ff8-42ce-94c3-cf674f2025b6
 Published: 2013-07-28
 Title: Setting Up a New PC with Chocolatey
 Lead: I have written a powershell script which will install some of the applications I use a lot via the Chocolatey Nuget Gallery.

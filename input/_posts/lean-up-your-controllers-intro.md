@@ -1,4 +1,5 @@
 layout: post
+Id: 73215ab5-d8bf-4d63-9cd5-dc84d8d50094
 Published: 2016-06-09
 Title: Skinny Fat, Lean Up Your Controllers - Introduction
 Lead: Fat controllers are bad. In this series I will show you how you can lean up your controllers by moving your code to a command based system.

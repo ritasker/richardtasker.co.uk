@@ -1,4 +1,5 @@
 layout: post
+Id: 68b6814b-3249-4c72-b77f-d6f118defc33
 Published: 2012-10-23
 Title: DDD North 2
 Lead: DDD North is a free event for developers and organised by developers. These are the sessions I attended.

@@ -1,4 +1,5 @@
 layout: post
+Id: 04c796f6-def3-464c-8e27-416e33e7f538
 Published: 2017-10-25
 Title: Skinny Fat, Lean Up Your Controllers - POST/PUT/DELETE Requests
 Lead: This post focuses on the writes in the system and introduces the concept of a command and handlers for mutating state, reducing the controller further.

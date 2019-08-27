@@ -1,4 +1,5 @@
 layout: post
+Id: b34764fa-fddb-44df-ade2-e6cb21208e3f
 Published: 2014-01-19
 Title: A Simple Rule Engine
 Lead: After a brainstorming session, and the use of a few interfaces and design patterns a potentially complicated rules engine turned out to be quite simple.

@@ -1,4 +1,5 @@
 layout: post
+Id: ac172816-cb89-4316-9a0d-8b681e96c334
 Published: 2014-01-21
 Title: Moving from Octopress to Sandra.Snow
 Lead: I have had a blog since April 2012. In this post I will cover how I migrated my blog from Octopress to Sandra.Snow.

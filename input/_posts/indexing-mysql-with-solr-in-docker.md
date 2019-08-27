@@ -1,4 +1,5 @@
 layout: post
+Id: 07658c2b-d285-44b7-b1f4-b87ade68dd47
 Published: 2015-11-26
 Title: Indexing MySQL with SOLR in Docker
 Lead: A step-by-step guide of how to index MySQL data in SOLR all within two Docker containers.

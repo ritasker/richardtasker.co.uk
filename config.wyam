@@ -4,15 +4,20 @@
 #n -p Wyam.Minification
 #n -p Wyam.Razor
 #n -p Wyam.Yaml
+#n -p Wyam.Feeds
 #n ColorCode
 #n System.ServiceModel.Syndication
 
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+    = System.Globalization.CultureInfo.CreateSpecificCulture("en-GB");
+
 // Customize your settings and add new ones here
 Settings[Keys.CleanOutputPath] = true;
-Settings[Keys.Host] = "https://richardtasker.co.uk";
+Settings[Keys.Host] = "richardtasker.co.uk";
 Settings[Keys.LinksUseHttps] = true;
 Settings["site-title"] = "Richard Tasker";
 Settings["tag-line"] = "Strings, Things and Lightsabers";
+Settings["description"] = "The Personal Blog of Richard Tasker, a .Net Developer";
 
 
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture
@@ -41,9 +46,21 @@ Pipelines.Add("Posts",
     FrontMatter(Yaml()),
     Markdown(),
     Meta("canonical", @doc.String("RelativeFilePathBase").Replace("_posts/", "/") + "/"),
+    Meta("PostContent", @doc.Content),
     Razor()
         .WithViewStart("_layouts/_ViewStart.cshtml"),	
-    WriteFiles("." + @doc["permalink"] + "/index.html")
+    WriteFiles("." + @doc["permalink"] + "/index.html"),
+    Branch(
+        GenerateFeeds()
+          .WithFeedTitle(ctx => ctx.String("tag-line"))
+          .WithFeedDescription(ctx => ctx.String("description"))
+          .WithRssPath(_ => new FilePath("./rss/index.xml"))
+          .WithAtomPath(_ => null)
+          .WithItemDescription((d,c) => d["Lead"])
+          .WithItemId((d,c) => d["Id"])
+          .WithItemContent((d,c) => d.String("PostContent")),
+    	WriteFiles()
+    )
 );
 
 Pipelines.Add("Tags",

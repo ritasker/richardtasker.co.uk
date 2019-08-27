@@ -1,4 +1,5 @@
 layout: post
+Id: 4b899548-9eb1-4532-8501-3c6b3b589667
 Published: 2016-08-15
 Title: Skinny Fat, Lean Up Your Controllers - GET Requests
 Lead: In this post I will show you how to remove data access code from your GET actions to Lean Up Your Controllers.

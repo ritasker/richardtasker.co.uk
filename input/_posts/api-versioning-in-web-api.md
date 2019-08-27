@@ -1,4 +1,5 @@
 layout: post
+Id: d19bd306-cd40-418d-a05e-2bfe8f7af41d
 Published: 2015-02-04
 Title: API Versioning in Web API
 Lead: There are many methods and opinions on how to version an API. This post shows how to version a .Net Web API using accept headers.

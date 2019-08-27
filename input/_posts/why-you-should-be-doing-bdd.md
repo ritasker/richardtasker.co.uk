@@ -1,4 +1,5 @@
 layout: post
+Id: aa857087-5dd1-4924-8ebc-6afe2dbf8ada
 Published: 2014-04-22
 Title: Why You Should Be Doing BDD
 Lead: BDD is a bit of a buzz word at the moment. People seem to think its just a new way of writing tests. But it is not just about the tests...

@@ -1,4 +1,5 @@
 layout: post
+Id: 36767814-02f5-4934-ba41-300cb3125e82
 Published: 2013-07-24
 Title: A Day with Nancy
 Lead: Nancy FX is a light weight web framework, which allows you to get up and running much quicker than some of the existing frameworks.
