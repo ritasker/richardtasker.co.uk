@@ -71,7 +71,7 @@ Success!
 
 And here are the tables the migrator created.
 
-![database tables](https://github.com/ritasker/blog-post-images/raw/master/intro-dotnet-db-migrate/db-tables.png)
+![database tables](/assets/images/posts/2018/09/db-tables.png)
 
 
 ### Wrapping Up

@@ -63,7 +63,7 @@ Solr has an admin portal, to access the portal with a browser we will need to ex
 
 Once the container is running, if you navigate to [http://0.0.0.0:8983](http://0.0.0.0:8983) you should see the admin portal running.
 
-![](/content/images/2016/05/solr-admin.png)
+![](/assets/images/posts/2015/11/solr-admin.png)
 
 Now we have two containers running we can see if the have been attached to the `solr_mysql` network, by running the `network inspect` command.
 
@@ -140,7 +140,7 @@ Copy the jar file into the solr container, I copied it to the data import handle
 Now to let SOLR know of the data import handler we have created.
 You can download the default config file from the admin portal by, selecting your core from the dropdown on the left. Selecting files from the menu the clicking on the `solrconfig.xml` link, across the top of the screen is a link you can use to save the file.
 
-![](/content/images/2016/05/solr-save-config.png)
+![](/assets/images/posts/2015/11/solr-save-config.png)
 
 We will have to update this file to import the MySQL driver and the data import handler library.
 
@@ -161,11 +161,11 @@ This block tells SOLR where to find our db-data-config.xml file. About half way 
 
 I restarted my container at this point just make sure the new configs were loaded. Once your container come back up head over to the admin portal. If everything has loaded you should see the following if you select Dataimport from the menu.
 
-![](/content/images/2016/05/solr-dataimport.png)
+![](/assets/images/posts/2015/11/solr-dataimport.png)
 
 Selecting customer from the Entity drop down and clicking execute will import and index our data.
 
-![](/content/images/2016/05/solr-query-result.png)
+![](/assets/images/posts/2015/11/solr-query-result.png)
 
 Above I have just executed the default `*:*` query, which will return the first 10 results and how many entities there are, 122 in the above example.
 

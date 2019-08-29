@@ -34,7 +34,7 @@ With Nancy installed I needed to create my first module.
 
 Nancy handles its URL route patterns in the constructor of the module, you can also tell the module a base URL, more on that later. In the above example all I am doing is returning text to the browser.
 
-![](/content/images/2016/05/helloNancy.png)
+![](/assets/images/posts/2013/07/helloNancy.png)
 
 With the hello world example out of the way, I wanted to start writing data to a database. I wanted to try out a document database, again this choice over SQL was down to going for the light weight approach. And [Mongo](https://www.mongodb.com/) was his nameo.
 
