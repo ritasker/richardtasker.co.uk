@@ -88,6 +88,12 @@ Pipelines.Add("Homepage",
 	WriteFiles(@doc.Get<int>("CurrentPage") == 1 ? "index.html" : ("index-" + @doc.Get<int>("CurrentPage") + ".html")).UseWriteMetadata(false)
 );
 
+Pipelines.Add("Sitemap",
+	Documents(@ctx.Documents),
+	Sitemap(),
+    WriteFiles((d, c) => "sitemap.xml")
+);
+
 Pipelines.Add("Assets",
 	CopyFiles("_assets/**/*{!.cshtml,!.md,!.less,}")
 		.To(x => x.Path.FullPath.Replace("input/_assets/", "output/assets/"))
