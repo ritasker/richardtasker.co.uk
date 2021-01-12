@@ -1,15 +1,3 @@
-[Pp]ackages/
-[Tt]ools/*
-![Tt]ools/packages.config
-[Oo]utput/
-[Rr]elease/
-sylva/*
-nuget.exe
-/debug.log
-/node_modules/
-/output.zip
-/config.wyam.packages.xml
-/config.wyam.hash
-/config.wyam.dll
+public/
 .vscode
 .idea

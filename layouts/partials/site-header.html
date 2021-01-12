@@ -1,0 +1,45 @@
+{{ if .IsHome }}
+  <!-- start cover area / cover-main -->
+    <div class="cover align-center">
+        <div class="cover-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h1 class="title">Welcome to {{ .Site.Title }}!</h1>
+                        <p class="description">{{ $.Site.Params.tag_line }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end cover area -->
+{{ end }}
+
+<!-- start header -->
+<header class="main-header">
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-content-wrap">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed btn btn-default btn-menu-toggle" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>				
+				<a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+			</div>			
+			<div class="collapse navbar-collapse" id="main-menu">
+                <!-- start navigation -->
+                <ul class="menu navbar-right">
+	                <li class="home"><a href="/">Home</a></li>
+	                <li class="public-speaking"><a href="/public-speaking">Public Speaking</a></li>
+	                <li class="about"><a href="/about">About</a></li>
+                </ul>
+                <!-- end navigation -->
+            </div>
+	        </div>
+		</div>
+	</nav>
+</header>
+<!-- end header -->

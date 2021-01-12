@@ -1,0 +1,13 @@
+<!-- start pagination -->
+<div class="pagination-wrap">
+    <nav class="pagination clearfix" role="navigation">
+        {{if .Paginator.HasPrev }}
+            <a class="newer-posts btn btn-default" href="{{ .Paginator.Prev.URL }}"> <i class="fa fa-long-arrow-left fa-fw"></i>Newer Posts</a>
+        {{ end }}
+        <span class="page-number">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+        {{if .Paginator.HasNext }}
+            <a class="older-posts btn btn-default" href="{{ .Paginator.Next.URL }}">Older Posts<i class="fa fa-long-arrow-right fa-fw"></i></a>
+        {{ end }}
+    </nav>
+</div>
+<!-- end pagination -->

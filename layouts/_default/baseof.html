@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Page Meta -->
+    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+    <!-- stylesheets -->
+    <link href='//fonts.googleapis.com/css?family=Montserrat%7CInconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/hl-styles/monokai_sublime.css">
+    {{ $style := resources.Get "scss/screen.scss" | resources.ToCSS }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}">    
+</head>
+<body >
+{{ partial "site-header.html" .}}
+
+{{ block "main" . }}{{ end }}
+
+{{ partial "site-footer.html" . }}
+<a href="#" id="back-to-top" class="align-center"><i class="fa fa-long-arrow-up"></i></a>
+{{ partialCached "site-scripts.html" . }}
+</body>
+</html>

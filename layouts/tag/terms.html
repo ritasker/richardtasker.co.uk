@@ -1,0 +1,24 @@
+{{ define "main" }}
+<!-- start main content area -->
+<section class="main-content">
+    <div class="container">
+        {{ range $taxonomy_term, $taxonomy := .Site.Taxonomies }}
+            {{ range $key, $value := $taxonomy }}
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h2 class="title">{{ $key }}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 content-wrap">
+                        {{ range $value.Pages }}
+                            {{ partial "summary.html" . }}
+                        {{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
+<!-- end main content area -->
+{{ end }}

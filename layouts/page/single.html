@@ -1,0 +1,29 @@
+{{ define "main" }}
+<!-- start main content area -->
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 content-wrap">
+                <!-- start post -->
+                <article class="post">
+                    {{ if .Params.image }}
+                        <div class="featured-media">
+                            <img class="gray" src="{{ .Params.image }}" alt="{{ .Title}}">
+                        </div>
+                    {{ end }}
+                    <div class="post-inner-wrap">
+                        <header class="post-header align-center">
+                            <h2 class="post-title">{{ .Title }}</h2>
+                        </header>
+                        <div class="post-content">
+                            {{ .Content }}
+                        </div>
+                    </div>
+                </article>
+                <!-- end post -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end main content area -->
+{{ end }}

@@ -1,0 +1,17 @@
+
+{{ define "main" }}
+<!-- start main content area -->
+    <section class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 content-wrap">
+                    {{ range where .Paginator.Pages "Type" "posts" }}
+                        {{ partial "summary.html" . }}
+                    {{ end }}
+                    {{partial "pagination.html" . }}
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- end main content area -->
+{{ end }}

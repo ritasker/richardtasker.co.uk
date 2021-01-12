@@ -1,0 +1,46 @@
+{{ define "main" }}
+<!-- start main content area -->
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 content-wrap">
+                <!-- start post -->
+                <article class="post">
+                    {{ if .Params.image }}
+                        <div class="featured-media">
+                            <img class="gray" src="{{ .Params.image }}" alt="{{ .Title}}">
+                        </div>
+                    {{ end }}
+                    <div class="post-inner-wrap">
+                        <header class="post-header align-center">
+                            <h2 class="post-title">{{ .Title}}</h2>
+                            <div class="post-meta">
+                                <span class="date">{{ .PublishDate.Format "02 Jan, 2006" }}</span>
+                            </div>
+                            {{ if .Params.featured }}
+                                <div class="featured">Featured</div>
+                            {{ end }}
+                            </header>
+                        <div class="post-content">
+                            {{ .Content }}
+                        </div>
+                        <footer class="post-footer clearfix">
+                            <div class="pull-left tag-list">
+                                <i class="fa fa-folder-o"></i>
+                                {{ range (.GetTerms "tags") }}
+                                    <a href="{{ .Permalink }}" >{{ .LinkTitle }} ?</a>
+                                {{ end }}
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+                <div class="share-author-wrap">
+                    {{ partial "about-author.html" . }}
+                </div>
+                <!-- end post -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end main content area -->
+{{ end }}

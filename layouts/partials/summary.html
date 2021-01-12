@@ -1,0 +1,31 @@
+<!-- start post -->
+<article class="post">
+    <div class="post-inner-wrap">
+        <header class="post-header align-center">
+            <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <div class="post-meta">
+                <span class="date">{{ .PublishDate.Format "02 Jan, 2006" }}</span>
+            </div>
+            {{ if .Params.featured }}
+            <div class="featured">
+                Featured
+            </div>
+            {{ end }}
+        </header>
+        <div class="post-content">
+            {{ .Summary  }}
+        </div>
+        <div class="permalink align-center">
+            <a href="{{ .Permalink }}" class="btn btn-default">Read More</a>
+        </div>
+        <footer class="post-footer clearfix">
+            <div class="pull-left tag-list">
+                <i class="fa fa-folder-o"></i>
+                {{ range (.GetTerms "tags") }}
+                    <a href="{{ .Permalink }}" >{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+        </footer>
+    </div>
+</article>
+<!-- end post -->

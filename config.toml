@@ -1,3 +1,15 @@
-baseURL = "https://richardtasker.co.uk"
 languageCode = "en-gb"
-title = "Strings, Things And Lightsabers"
+title = "Richard Tasker"
+baseURL = "https://richardtasker.co.uk"
+paginate = 5
+
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+    tag_line = "Strings, Things and Lightsabers"
+    description = "Tesla's Awesome Hugo Site"
+    recent_posts_number = 5
