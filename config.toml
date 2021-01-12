@@ -1,6 +1,7 @@
 languageCode = "en-gb"
 title = "Richard Tasker"
 baseURL = "https://richardtasker.co.uk"
+googleAnalytics = "UA-23137504-1"
 paginate = 5
 
 [permalinks]
